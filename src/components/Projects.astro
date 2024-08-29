@@ -1,46 +1,100 @@
 ---
 import GitHub from "./icons/GitHub.astro"
-import NextJS from "./icons/NextJS.astro"
+import PHP from "./icons/PHP.astro"
+import JavaScript from "./icons/JavaScript.astro"
+import SASS from "./icons/SASS.astro"
+import MYySQL from "./icons/MySQL.astro"
+import ReactJS from "./icons/ReactJS.astro"
 import Tailwind from "./icons/Tailwind.astro"
+import Shad from "./icons/Shad.astro"
+import Express from "./icons/Express.astro"
+import MongoDB from "./icons/Mongo.astro"
 import Link from "./icons/Link.astro"
+
 import LinkButton from "./LinkButton.astro"
 
 const TAGS = {
-  NEXT: {
-    name: "Next.js",
+  ReactJS: {
+    name: "React.js",
     class: "bg-black text-white",
-    icon: NextJS,
+    icon: ReactJS,
   },
   TAILWIND: {
     name: "Tailwind CSS",
     class: "bg-[#003159] text-white",
     icon: Tailwind,
   },
+  PHP: {
+    name: "PHP",
+    class: "bg-[#787CB5] text-white",
+    icon: PHP,
+  },
+  SASS: {
+    name: "SASS",
+    class: "bg-[#fff] text-[#CD6799]",
+    icon: SASS,
+  },
+  JS: {
+    name: "JavaScript",
+    class: "bg-[#F0DB4F] text-white",
+    icon: JavaScript,
+  },
+  MYSQL: {
+    name: "MySQL",
+    class: "bg-[#00758F] text-white",
+    icon: MYySQL,
+  },
+  SHAD: {
+    name: "Shad",
+    class: "bg-black text-white",
+    icon: Shad,
+  },
+  MONGODB: {
+    name: "MongoDB",
+    class: "bg-[#4F46E5] text-white",
+    icon: MongoDB,
+  },
+  EXPRESS: {
+    name: "Express.js",
+    class: "bg-[#000] text-white",
+    icon: Express,
+  },
 }
 const PROJECTS = [
   {
-    title: "SVGL - A beautiful library with SVG logos",
+    title: "Barber Pro - Aplicacion para cortes de cabello",
     description:
-      "Biblioteca de logos SVG de las marcas más populares. +10k visitas al mes. +2K svgs descargados. Creado desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://svgl.vercel.app/",
-    github: "https://github.com/pheralb/svgl",
-    image: "/projects/svgl.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+      "Web que permite a los usuarios reservar servicios de estilista mediante una cuenta, al igual que poder dar seguimiento a las citas mediante un panel de gestión en caso de ser admin. Creada con PHP, MySQL, SASS y JavaScript.",
+      link: "https://fecqanu.nyc.dom.my.id/",
+      github: "https://github.com/Deivid182/app-salon-php",
+      image: "/projects/barber-pro.png",
+      tags: [TAGS.PHP, TAGS.MYSQL, TAGS.JS, TAGS.SASS],
+    },
+    {
+      title: "Sneakers Products Page - A modern page for an ecommerce",
+      description:
+      "Una página moderna para un ecommerce. Creada desde cero con React.js y Tailwind CSS, Headless UI y Context API.",
+      link: "https://react-vite-ecommerce.netlify.app/",
+      github: "https://github.com/Deivid182/ecommerce-product-page",
+      image: "/projects/product-page.png",
+    tags: [TAGS.ReactJS, TAGS.TAILWIND],
   },
   {
-    title: "AdventJS - Retos de programación con JavaScript y TypeScript",
+    title: "WebVideos - Aplicacion para coleccionar videos de YouTube",
     description:
-      "Plataforma gratuita con retos de programación. Más de 1 millón de visitas en un mes. +50K retos completados. Creada desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://adventjs.dev",
-    image: "/projects/adventjs.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+      "Plataforma para compartir con diferentes usuarios videos de YouTube. Creada con React.js, TypeScript, Tailwind CSS, Shadcn UI, Express y MongoDB,",
+    link: "https://resplendent-dasik-ce178a.netlify.app/",
+    github: "https://github.com/Deivid182/video-app-client",
+    githubServer: "https://github.com/Deivid182/video-app-server",
+    image: "/projects/web-videos.png",
+    tags: [TAGS.ReactJS, TAGS.TAILWIND, TAGS.SHAD, TAGS.EXPRESS, TAGS.MONGODB],
   },
 ]
 ---
 
 <div class="flex flex-col gap-y-16">
   {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
+    PROJECTS.map(({ image, title, description, tags, link, github, githubServer }) => (
     <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
   <div class="w-full md:w-1/2">
     <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
@@ -53,7 +107,7 @@ const PROJECTS = [
       {title}
     </h3>
     <div class="flex flex-wrap mt-2">
-      <ul class="flex flex-row mb-2 gap-x-2">
+      <ul class="flex flex-row flex-wrap mb-2 gap-2">
           {tags.map((tag) => (
             <li>
               <span
@@ -67,12 +121,17 @@ const PROJECTS = [
         </ul>
 
       <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
-      <footer class="flex items-end justify-start mt-4 gap-x-4">
+      <footer class="flex items-end flex-wrap mt-4 gap-4">
           {github && (
             <LinkButton href={github}>
               <GitHub class="size-6" />
               Code
-              
+            </LinkButton>
+          )}
+          {githubServer && (
+            <LinkButton href={github}>
+              <GitHub class="size-6" />
+              Server
             </LinkButton>
           )}
           {link && (

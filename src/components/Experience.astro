@@ -1,0 +1,22 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+const EXPERIENCE = [
+  {
+    date: "Octubre 2023",
+    title: "Desarrollador Front End",
+    company: "Grupo Trigarante, Agente de Seguros y de Fianzas S.A. de C.V.",
+    description:
+      "Responsable de mantenimiento a sitios web y motores de pago. Mejora de performance a través de la puesta en marcha de buenas prácticas, alcanzando una carga inicial rápida. Integración continua con Bitbucket y git flow como flujo de trabajo.",
+  },
+]
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>
